@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### APIKEY ###
-/src/resources/config/apikey.yml
+/src/main/resources/config/apikey.yml
