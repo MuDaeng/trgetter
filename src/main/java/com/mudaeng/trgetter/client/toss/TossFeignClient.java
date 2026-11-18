@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name="toss", url = "https://openapi.tossinvest.com")
+@FeignClient(name="toss", url = "https://openapi.tossinvest.com", configuration= TossFeignClient.class)
 public interface TossFeignClient {
     @GetMapping("/api/v1/accounts")
     Accounts getAccounts();
