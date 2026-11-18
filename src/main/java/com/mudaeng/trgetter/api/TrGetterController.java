@@ -1,7 +1,6 @@
 package com.mudaeng.trgetter.api;
 
-import com.mudaeng.trgetter.client.Accounts;
-import com.mudaeng.trgetter.client.TokenResponse;
+import com.mudaeng.trgetter.client.toss.TokenResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

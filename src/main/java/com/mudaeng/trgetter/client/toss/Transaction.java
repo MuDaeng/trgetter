@@ -1,4 +1,4 @@
-package com.mudaeng.trgetter.client;
+package com.mudaeng.trgetter.client.toss;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

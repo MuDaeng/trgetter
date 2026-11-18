@@ -1,4 +1,4 @@
-package com.mudaeng.trgetter.client;
+package com.mudaeng.trgetter.client.toss;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

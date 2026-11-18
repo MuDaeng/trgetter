@@ -1,4 +1,4 @@
-package com.mudaeng.trgetter.client;
+package com.mudaeng.trgetter.client.toss;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;

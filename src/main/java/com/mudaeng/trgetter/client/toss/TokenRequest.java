@@ -1,4 +1,4 @@
-package com.mudaeng.trgetter.client;
+package com.mudaeng.trgetter.client.toss;
 
 import feign.form.FormProperty;
 import lombok.AllArgsConstructor;

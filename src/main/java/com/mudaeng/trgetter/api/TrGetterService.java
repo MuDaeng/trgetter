@@ -1,6 +1,6 @@
 package com.mudaeng.trgetter.api;
 
-import com.mudaeng.trgetter.client.*;
+import com.mudaeng.trgetter.client.toss.*;
 import com.mudaeng.trgetter.configuration.TossConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
