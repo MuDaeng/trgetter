@@ -1,5 +1,7 @@
 package com.mudaeng.trgetter.api;
 
+import com.mudaeng.trgetter.client.mudaeng.MudaengFeignClient;
+import com.mudaeng.trgetter.client.mudaeng.MudaengRegistToss;
 import com.mudaeng.trgetter.client.toss.*;
 import com.mudaeng.trgetter.configuration.TossConfig;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,8 @@ public class TrGetterService {
 
     private final TossFeignClient tossFeignClient;
 
+    private final MudaengFeignClient mudaengFeignClient;
+
     @Value("${api.key.toss.client-id}")
     private String clientId;
 
@@ -34,7 +38,11 @@ public class TrGetterService {
         TokenResponse token = tossFeignClient.getToken(TokenRequest.clientCredentials(clientId, clientSecret));
         TossConfig.key = token.getAccessToken();
         tokenExpiresAt = Instant.now().plusSeconds(token.getExpiresIn() - EXPIRY_MARGIN_SECONDS);
-        getTransactions();
+        var transactionList = getTransactions();
+        MudaengRegistToss registToss = MudaengRegistToss.builder()
+                .transactionList(transactionList)
+                .build();
+        var response = mudaengFeignClient.registBalance(registToss);
         return token;
     }
 
@@ -49,7 +57,7 @@ public class TrGetterService {
     /**
      * 거래내역 조회 - 계좌 목록의 첫 번째 계좌 seq를 X-Tossinvest-Account 헤더로 사용
      */
-    public void getTransactions() {
+    public List<Transaction> getTransactions() {
         List<AccountInfo> accounts = getAccounts().getResult();
         if (accounts == null || accounts.isEmpty()) {
             throw new IllegalStateException("조회 가능한 계좌가 없습니다.");
@@ -63,6 +71,8 @@ public class TrGetterService {
             tr = tossFeignClient.getTransactions(accountSeq, "BUY,SELL", cursor, 100);
             transactionList.addAll(tr.getResult().getTransactions());
         } while(tr.getResult().isHasNext());
+
+        return transactionList;
     }
 
     private synchronized void ensureAccessToken() {
