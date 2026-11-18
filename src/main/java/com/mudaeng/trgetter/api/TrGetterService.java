@@ -54,7 +54,7 @@ public class TrGetterService {
         if (accounts == null || accounts.isEmpty()) {
             throw new IllegalStateException("조회 가능한 계좌가 없습니다.");
         }
-        int accountSeq = accounts.get(0).getAccountSeq();
+        int accountSeq = accounts.getFirst().getAccountSeq();
         Transactions tr = null;
         List<Transaction> transactionList = new ArrayList<>();
         do {
