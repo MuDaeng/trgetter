@@ -1,6 +1,5 @@
 package com.mudaeng.trgetter.client.mudaeng;
 
-import com.mudaeng.trgetter.client.toss.Transaction;
 import lombok.*;
 
 import java.util.List;
@@ -11,5 +10,5 @@ import java.util.List;
 @Getter
 @Setter
 public class MudaengRegistToss {
-    private List<Transaction> transactionList;
+    private List<MudaengTossTransaction> transactionList;
 }

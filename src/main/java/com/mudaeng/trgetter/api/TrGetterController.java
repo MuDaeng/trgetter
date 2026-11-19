@@ -1,11 +1,9 @@
 package com.mudaeng.trgetter.api;
 
-import com.mudaeng.trgetter.client.toss.TokenResponse;
+import com.mudaeng.trgetter.client.mudaeng.MudaengRegistToss;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/tr")
@@ -14,8 +12,7 @@ public class TrGetterController {
     private final TrGetterService trGetterService;
 
     @GetMapping("/toss")
-    public ResponseEntity<TossSuccess> transactionGet() {
-        TokenResponse token = trGetterService.issueAccessToken();
-        return ResponseEntity.ok(new TossSuccess("토큰 발급 완료 (" + token.getTokenType() + ", 만료 " + token.getExpiresIn() + "초)"));
+    public ResponseEntity<MudaengRegistToss> transactionGet(@RequestHeader String clientId, @RequestHeader String clientSecret) {
+        return ResponseEntity.ok(trGetterService.getTossTransactions(clientId, clientSecret));
     }
 }

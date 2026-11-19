@@ -1,17 +1,13 @@
 package com.mudaeng.trgetter.configuration;
 
 import feign.RequestInterceptor;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@EnableFeignClients("com.mudaeng")
 public class TossConfig {
     public static String key = "";
 
     @Bean
-    public RequestInterceptor requestInterceptor() {
+    public RequestInterceptor tossRequestInterceptor() {
         return template -> {
             if (template.url().contains("/oauth2/token")) {
                 return;

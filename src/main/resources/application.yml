@@ -1,23 +1,22 @@
+server:
+  port: 8081
 spring:
   application:
     name: trgetter
-  config:
-    import: optional:classpath:config/apikey.yml
-  springdoc:
-    swagger-ui:
-      groups-order: DESC
-      tags-sorter: alpha
-      operations-sorter: method
-      disable-swagger-default-url: true
-      display-request-duration: true
-      defaultModelsExpandDepth: 2
-      defaultModelExpandDepth: 2
-    api-docs:
-      path: /api-docs
-    show-actuator: true
-    default-consumes-media-type: application/json
-    default-produces-media-type: application/json
-    writer-with-default-pretty-printer: true
-    model-and-view-allowed: true
-    paths-to-match:
-      - /**
+springdoc:
+  swagger-ui:
+    groups-order: DESC
+    tags-sorter: alpha
+    operations-sorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+    defaultModelsExpandDepth: 2
+    defaultModelExpandDepth: 2
+  api-docs:
+    path: /api-docs
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  writer-with-default-pretty-printer: true
+  model-and-view-allowed: true
+  paths-to-match:
+    - /**

@@ -2,8 +2,10 @@ package com.mudaeng.trgetter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class TrgetterApplication {
 
     public static void main(String[] args) {
